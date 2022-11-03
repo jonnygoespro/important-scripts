@@ -12,6 +12,26 @@ win_user="Jonas"
 linux_user="jonny"
 source_folder="/mnt/c/Users/$win_user/dev/prv/"
 
+# Check if windows user exists
+if [ ! -d "/mnt/c/Users/$win_user" ]; then
+	echo "Error: User $win_user does not exist on Windows"
+	exit 1
+fi
+
+# Check if linux user exists
+if [ ! -d "/home/$linux_user" ]; then
+	echo "Error: User $linux_user does not exist on Linux"
+	exit 1
+fi
+
+
+# Check if source folder exists
+if [ ! -d "$source_folder" ]; then
+	echo "Error: Source folder does not exist"
+	exit 1
+fi
+
+# Print Usage for script
 print_usage() {
 	echo "Usage: sudo ./init-project.sh -n <project_name> -c <git_repository>"
 }
