@@ -77,6 +77,14 @@ fi
 ln -s "$source_folder$project_name" "./$project_name"
 echo "Symlink created on subsystems"
 
+# Create dist and src folder with example index.html
+if [ "$repo" == "" ]; then
+	mkdir "./$project_name/dist";
+	mkdir "./$project_name/src";
+	echo "<h1>$project_name</h1>" > "./$project_name/dist/index.html"
+	echo "<h1>$project_name</h1>" > "./$project_name/src/index.html"
+fi
+
 # Start apache
 service apache2 start
 
